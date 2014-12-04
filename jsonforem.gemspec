@@ -5,13 +5,13 @@ require "jsonforem/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "jsonforem"
+  s.name        = "miniature-octo-dribble"
   s.version     = Jsonforem::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
+  s.authors     = ["Ryan O'Connor"]
+  s.email       = ["rocifier@gmail.com"]
   s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Jsonforem."
-  s.description = "TODO: Description of Jsonforem."
+  s.summary     = "JSON REST forum backend api."
+  s.description = "JSON REST forum backend api."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]

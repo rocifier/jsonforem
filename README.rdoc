@@ -1,3 +1,18 @@
-= Jsonforem
+= miniature-octo-dribble
 
 This project uses a json REST api and comes under the MIT-LICENSE. Use it however you will. No responsibility taken for any kind of damage.
+
+== Installing:
+
+gem 'miniature-octo-dribble', :git => 'git://github.com/rocifier/miniature-octo-tribble.git'
+
+bundle
+
+== Usage:
+
+Assuming you use a class called User for your users (and you should), you don't need to configure the string Jsonforem::user_class in an initializer, so just install the database stuff, which is really important:
+
+rake jsonforem:install:migrations
+rake db:migrate
+
+And you should be ready to go. I'll update this in more details later. Right now I feel lazy and I want to finish this engine.
