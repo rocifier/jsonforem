@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jsonforem (0.0.1)
+    miniature-octo-dribble (0.0.1)
       rails (~> 4.1.7)
 
 GEM
@@ -83,5 +83,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  jsonforem!
+  miniature-octo-dribble!
   sqlite3

@@ -8,11 +8,66 @@ gem 'miniature-octo-dribble', :git => 'git://github.com/rocifier/miniature-octo-
 
 bundle
 
-== Usage:
-
 Assuming you use a class called User for your users (and you should), you don't need to configure the string Jsonforem::user_class in an initializer, so just install the database stuff, which is really important:
 
 rake jsonforem:install:migrations
+
 rake db:migrate
 
+Finally, you need to create a method on your User class called forum_admin? which returns a boolean whether that particular user has administrator priveleges or not for the forum.
+
 And you should be ready to go. I'll update this in more details later. Right now I feel lazy and I want to finish this engine.
+
+== Usage
+
+Note that a comment is just a post, but with its parent id set to another parent post.
+
+Routes for Jsonforem::Engine:
+
+        posts GET    /posts(.:format)                 List ALL posts unfiltered.
+
+              POST   /posts(.:format)                 Create a post. Not recommended.
+
+         post GET    /posts/:id(.:format)             Get a post. No authorization.
+
+              PUT    /posts/:id(.:format)             Submit edit to post. Must be authorized.
+
+              DELETE /posts/:id(.:format)             Delete a post. Must be authorized.
+
+   categories GET    /categories(.:format)            Get all categories.
+
+              POST   /categories(.:format)            Create a category (as admin).
+
+     category GET    /categories/:id(.:format)        Get a specific category.
+
+              PUT    /categories/:id(.:format)        Submit edit to category (as admin)
+
+              DELETE /categories/:id(.:format)        Delete a category (as admin)
+
+       forums GET    /forums(.:format)                Gets all forums, ever. Not recommended.
+
+              POST   /forums(.:format)                Create a new forum inside a category.
+
+        forum GET    /forums/:id(.:format)            Get a specific forum.
+
+              PUT    /forums/:id(.:format)            Submit edit to forum (as admin)
+
+              DELETE /forums/:id(.:format)            Delete a forum (as admin).
+
+       topics GET    /topics(.:format)                Get all topics, ever. Not recommended.
+
+              POST   /topics(.:format)                Creates a topic inside a forum (as admin)
+
+        topic GET    /topics/:id(.:format)            Get a specific forum.
+
+              PUT    /topics/:id(.:format)            Submit edit to topic (as admin)
+              DELETE /topics/:id(.:format)            Delete a topic (as admin)
+
+              GET    /posts/:id/children(.:format)    Get all the comments below a post.
+
+              GET    /categories/:id/forums(.:format) Get all forums in a category.
+
+              GET    /forums/:id/topics(.:format)     Get all topics in a forum.
+
+              GET    /topics/:id/posts(.:format)      Get all top-level posts in a topic (does not include comment posts).
+
