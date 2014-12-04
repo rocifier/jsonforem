@@ -1,0 +1,3 @@
+= Jsonforem
+
+This project uses a json REST api and comes under the MIT-LICENSE. Use it however you will. No responsibility taken for any kind of damage.

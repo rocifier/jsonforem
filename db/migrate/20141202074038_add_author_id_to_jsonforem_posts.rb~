@@ -1,0 +1,5 @@
+class AddAuthorIdToJsonforemPosts < ActiveRecord::Migration
+  def change
+    add_column :jsonforem_posts, :author_id, :integer
+  end
+end
