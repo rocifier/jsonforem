@@ -26,7 +26,7 @@ Routes for Jsonforem::Engine:
 
         posts GET    /posts(.:format)                 List ALL posts unfiltered.
 
-              POST   /posts(.:format)                 Create a post. Not recommended.
+              POST   /posts(.:format)                 Create a post.
 
          post GET    /posts/:id(.:format)             Get a post. No authorization.
 
@@ -46,7 +46,7 @@ Routes for Jsonforem::Engine:
 
        forums GET    /forums(.:format)                Gets all forums, ever. Not recommended.
 
-              POST   /forums(.:format)                Create a new forum inside a category.
+              POST   /forums(.:format)                Create a new forum inside a category (as admin).
 
         forum GET    /forums/:id(.:format)            Get a specific forum.
 

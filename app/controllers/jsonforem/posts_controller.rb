@@ -3,10 +3,14 @@ require_dependency "jsonforem/application_controller"
 module Jsonforem
   class PostsController < ApplicationController
     respond_to :json
-    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
     before_filter :load_resource, :only => [:show, :destroy, :update]
     before_filter :authenticate_author, except: :show
     before_filter :ensure_post_ownership!, :only => [:destroy, :update]
+
+    # The following exception is raised from the model
+    rescue_from ActionController::ParameterMissing do |e|
+      param_missing(e)
+    end
 
     # GET /posts
     def index
@@ -16,24 +20,20 @@ module Jsonforem
     # POST /posts
     def create
       @post = Post.new(post_params) 
-
-      if @post.save
-        respond_with @post.to_json, status: 200
-      else
-        respond_with @post.errors.to_json, status: 500
-      end
+      @post.save
+      respond_with @post
     end
 
     # PATCH/PUT /posts/1
     def update
       @post.update(post_params)
-      respond_with
+      respond_with @post
     end
 
     # DELETE /posts/1
     def destroy
       @post.destroy
-      respond_with
+      respond_with @post
     end
 
     # GET /posts/1
@@ -48,10 +48,6 @@ module Jsonforem
 
 
     private
-      def record_not_found
-        render :json => {error: "Post with id=#{params[:id]} not found."}, status: 404
-      end
-
       def load_resource
         @post = Post.find(params[:id])
       end
@@ -64,6 +60,10 @@ module Jsonforem
         unless @post.owner_or_admin? current_user
           render :json => {error: "User not authorized"}, status: 401
         end
+      end
+
+      def param_missing(e)
+        render :json => {errors: e.message}, status: 400
       end
 
   end
