@@ -4,7 +4,7 @@ This project uses a json REST api and comes under the MIT-LICENSE. Use it howeve
 
 == Installing:
 
-gem 'miniature-octo-dribble', :git => 'git://github.com/rocifier/miniature-octo-tribble.git'
+gem 'miniature-octo-dribble', :github => 'rocifier/miniature-octo-tribble.git'
 
 bundle
 

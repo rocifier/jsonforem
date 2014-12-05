@@ -1,5 +1,9 @@
+require 'capybara/rails'
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  # https://github.com/rails/rails/issues/15089
+  config.allow_concurrency = false
 
   # The test environment is used exclusively to run your application's
   # test suite. You never need to work with it otherwise. Remember that
