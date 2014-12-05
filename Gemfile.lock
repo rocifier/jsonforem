@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    miniature-octo-dribble (0.0.1)
+    Jsonforem (0.1.0)
       rails (~> 4.1.7)
 
 GEM
@@ -111,7 +111,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  Jsonforem!
   cucumber-rails
   database_cleaner
-  miniature-octo-dribble!
   sqlite3

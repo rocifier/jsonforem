@@ -4,15 +4,19 @@ This project uses a json REST api and comes under the MIT-LICENSE. Use it howeve
 
 == Installing:
 
-gem 'miniature-octo-dribble', :github => 'rocifier/miniature-octo-tribble.git'
+    gem 'miniature-octo-dribble', :github => 'rocifier/miniature-octo-tribble.git'
 
-bundle
+    bundle
 
 Assuming you use a class called User for your users (and you should), you don't need to configure the string Jsonforem::user_class in an initializer, so just install the database stuff, which is really important:
 
-rake jsonforem:install:migrations
+    rake jsonforem:install:migrations
 
-rake db:migrate
+    rake db:migrate
+
+Now add this line into your config/environment.rb file:
+
+    require "jsonforem/engine"
 
 Finally, you need to create a method on your User class called forum_admin? which returns a boolean whether that particular user has administrator priveleges or not for the forum.
 
