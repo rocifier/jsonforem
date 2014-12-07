@@ -1,5 +1,6 @@
 Jsonforem::Engine.routes.draw do
 
+  mount Jsonforem::Engine => '/forum'
   resources :posts, :categories, :forums, :topics
 
   get 'posts/:id/children' => 'posts#childrenof'
