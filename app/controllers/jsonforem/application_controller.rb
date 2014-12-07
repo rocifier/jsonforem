@@ -1,4 +1,5 @@
 module Jsonforem
+  user_class = "User"
 
   class ApplicationController < ::ApplicationController
     def authenticate_author

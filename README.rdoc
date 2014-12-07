@@ -8,9 +8,9 @@ This project uses a json REST api and comes under the MIT-LICENSE. Use it howeve
 
     bundle
 
-Assuming you use a class called User for your users (and you should), you don't need to configure the string Jsonforem::user_class in an initializer, so just install the database stuff, which is really important:
+Assuming you use a class called User for your users (and you should), you don't need to configure the string Jsonforem::user_class in an initializer, so just install the database stuff, which is really important. The below generator also adds miniature-octo-dribble to your config/routes.rb under /forum which you can change if you like.
 
-    rake jsonforem:install:migrations
+    rails g jsonforem:install
 
     rake db:migrate
 

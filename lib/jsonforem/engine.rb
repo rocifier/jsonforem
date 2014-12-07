@@ -4,6 +4,4 @@ module Jsonforem
     isolate_namespace Jsonforem
 
   end
-
-
 end
