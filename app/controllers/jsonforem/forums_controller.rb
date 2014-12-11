@@ -50,7 +50,7 @@ module Jsonforem
 
     # GET /forums/:id/topics
     def topics
-      topics = Topic.find_by(:jsonforem_forums_id => params[:id])
+      topics = Topic.where(:forum_id => params[:id])
       topics = '[]' if !topics
       respond_with topics
     end
@@ -58,7 +58,7 @@ module Jsonforem
 
     private
       def forum_params 
-        params.require(:forum).permit(:title, :description, :jsonforem_categories_id)
+        params.require(:forum).permit(:title, :description, :category_id)
       end
 
       def param_missing(e)

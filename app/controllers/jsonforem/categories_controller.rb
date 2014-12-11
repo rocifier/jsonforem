@@ -6,7 +6,14 @@ module Jsonforem
     before_filter :load_resource, :only => [:show, :destroy, :update]
 
     def index
-      respond_with Category.all
+      @categories = Category.includes(:forums)
+      categories_hash = Hash.new
+      
+      @categories.each do |category|
+        categories_hash[category.title] = category.forums
+      end
+
+      respond_with categories_hash
     end
 
     def show
@@ -45,7 +52,7 @@ module Jsonforem
 
     # GET /categories/:id/forums
     def forums
-      forums = Forum.find_by(:jsonforem_categories_id => params[:id])
+      forums = Forum.where(:category_id => params[:id])
       forums = '[]' if !forums
       respond_with forums
     end

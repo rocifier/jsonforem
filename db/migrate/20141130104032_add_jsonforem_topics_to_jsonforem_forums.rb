@@ -1,5 +1,5 @@
-class AddJsonforemTopicsToJsonforemForums < ActiveRecord::Migration
+class AddTopicsToJsonforemForums < ActiveRecord::Migration
   def change
-    add_reference :jsonforem_topics, :jsonforem_forums, index: true
+    add_reference :jsonforem_forums, :topics, index: true
   end
 end

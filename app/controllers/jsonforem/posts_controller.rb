@@ -42,7 +42,7 @@ module Jsonforem
     end
 
     def childrenof
-      children = Post.where(jsonforem_posts_id: params[:id])
+      children = Post.where(post_id: params[:id])
       respond_with children, status: 200
     end
 
@@ -53,7 +53,7 @@ module Jsonforem
       end
 
       def post_params
-        params.require(:post).permit(:title, :content, :jsonforem_topics_id, :jsonforem_posts_id)
+        params.require(:post).permit(:title, :content, :topic_id, :post_id)
       end
 
       def ensure_post_ownership!
