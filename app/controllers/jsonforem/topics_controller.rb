@@ -50,7 +50,7 @@ module Jsonforem
 
     # GET /topics/:id/posts
     def posts
-      posts = Post.where({:topic_id => params[:id], :post_id => nil})
+      posts = Post.where({:topic_id => params[:id], :post_id => nil}).order('created_at desc')
       if posts
         posts.each do |post|
           post.content = post.content[0..255]
