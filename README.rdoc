@@ -20,58 +20,44 @@ Now add this line into your config/environment.rb file:
 
 Finally, you need to create a method on your User class called forum_admin? which returns a boolean whether that particular user has administrator priveleges or not for the forum.
 
-And you should be ready to go. I'll update this in more details later. Right now I feel lazy and I want to finish this engine.
+And you should be ready to go.
+
+== Progress and features
+
+The below page lists all features that are in progress. Red = high priority and blue = low priority.
+
+https://trello.com/b/lgnyugM2/miniature-octo-dribble
 
 == Usage
 
 Note that a comment is just a post, but with its parent id set to another parent post.
 
-Routes for Jsonforem::Engine:
+              GET    /posts                 List ALL posts unfiltered.
+              GET    /posts/search          Search all posts for content that contains searchstring case insensitive. JSON parameter example: {"searchstring": "test"}
+              POST   /posts                 Create a post.
+              GET    /posts/:id             Get a post. No authorization.
+              PUT    /posts/:id             Submit edit to post. Must be authorized.
+              DELETE /posts/:id             Delete a post. Must be authorized.
+              GET    /posts/:id/children    Get all the comments/replies below a post.
 
-        posts GET    /posts(.:format)                 List ALL posts unfiltered.
+              GET    /categories            Get all categories.
+              POST   /categories            Create a category (as admin).
+              GET    /categories/:id        Get a specific category.
+              PUT    /categories/:id        Submit edit to category (as admin)
+              DELETE /categories/:id        Delete a category (as admin)
+              GET    /categories/:id/forums Get all forums in a category.
 
-              POST   /posts(.:format)                 Create a post.
+              GET    /forums                Gets all forums, ever. Not recommended.
+              POST   /forums                Create a new forum inside a category (as admin).
+              GET    /forums/:id            Get a specific forum.
+              PUT    /forums/:id            Submit edit to forum (as admin)
+              DELETE /forums/:id            Delete a forum (as admin).
+              GET    /forums/:id/topics     Get all topics in a forum.
 
-         post GET    /posts/:id(.:format)             Get a post. No authorization.
-
-              PUT    /posts/:id(.:format)             Submit edit to post. Must be authorized.
-
-              DELETE /posts/:id(.:format)             Delete a post. Must be authorized.
-
-   categories GET    /categories(.:format)            Get all categories.
-
-              POST   /categories(.:format)            Create a category (as admin).
-
-     category GET    /categories/:id(.:format)        Get a specific category.
-
-              PUT    /categories/:id(.:format)        Submit edit to category (as admin)
-
-              DELETE /categories/:id(.:format)        Delete a category (as admin)
-
-       forums GET    /forums(.:format)                Gets all forums, ever. Not recommended.
-
-              POST   /forums(.:format)                Create a new forum inside a category (as admin).
-
-        forum GET    /forums/:id(.:format)            Get a specific forum.
-
-              PUT    /forums/:id(.:format)            Submit edit to forum (as admin)
-
-              DELETE /forums/:id(.:format)            Delete a forum (as admin).
-
-       topics GET    /topics(.:format)                Get all topics, ever. Not recommended.
-
-              POST   /topics(.:format)                Creates a topic inside a forum (as admin)
-
-        topic GET    /topics/:id(.:format)            Get a specific forum.
-
-              PUT    /topics/:id(.:format)            Submit edit to topic (as admin)
-              DELETE /topics/:id(.:format)            Delete a topic (as admin)
-
-              GET    /posts/:id/children(.:format)    Get all the comments below a post.
-
-              GET    /categories/:id/forums(.:format) Get all forums in a category.
-
-              GET    /forums/:id/topics(.:format)     Get all topics in a forum.
-
-              GET    /topics/:id/posts(.:format)      Get all top-level posts in a topic (does not include comment posts).
+              GET    /topics                Get all topics, ever. Not recommended.
+              POST   /topics                Creates a topic inside a forum (as admin)
+              GET    /topics/:id            Get a specific topic.
+              PUT    /topics/:id            Submit edit to topic (as admin)
+              DELETE /topics/:id            Delete a topic (as admin)
+              GET    /topics/:id/posts      Get all top-level posts in a topic (does not include comment posts).
 
