@@ -4,7 +4,7 @@ module Jsonforem
   class PostsController < ApplicationController
     respond_to :json
     before_filter :load_resource, :only => [:show, :destroy, :update]
-    before_filter :authenticate_author, except: [:show, :find, :childrenof]
+    before_filter :authenticate_author, except: [:show, :find, :childrenof, :index]
     before_filter :ensure_post_ownership!, :only => [:destroy, :update]
 
     # The following exception is raised from the model
@@ -14,8 +14,8 @@ module Jsonforem
 
     # GET /posts
     def index
-      respond_with Post.all, status: 200, git: "git://github.com/elasticsearch/elasticsearch-rails.git"
-
+      @posts = Post.all
+      render 'jsonforem/topics/posts'
     end
 
     # POST /posts
@@ -43,14 +43,14 @@ module Jsonforem
     end
 
     def childrenof
-      children = Post.where(post_id: params[:id]).order('created_at desc')
-      respond_with children, status: 200
+      @posts = Post.where(post_id: params[:id]).order('created_at desc')
+      render 'jsonforem/topics/posts'
     end
 
     def find
       # Textacular
-      result = Post.basic_search(content: params[:searchstring])
-      render :json => result, status: 200
+      @posts = Post.basic_search(content: params[:searchstring])
+      render 'jsonforem/topics/posts'
     end
 
     private
