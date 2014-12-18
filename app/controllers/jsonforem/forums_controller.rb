@@ -50,9 +50,9 @@ module Jsonforem
 
     # GET /forums/:id/topics
     def topics
-      topics = Topic.where(:forum_id => params[:id])
-      topics = '[]' if !topics
-      respond_with topics
+      @topics = Topic.where(:forum_id => params[:id])
+      @topics = '[]' if !@topics
+      render 'jsonforem/forums/topics'
     end
 
 

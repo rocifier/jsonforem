@@ -52,9 +52,9 @@ module Jsonforem
 
     # GET /categories/:id/forums
     def forums
-      forums = Forum.where(:category_id => params[:id])
-      forums = '[]' if !forums
-      respond_with forums
+      @forums = Forum.where(:category_id => params[:id])
+      @forums = '[]' if !@forums
+      render 'jsonforem/categories/forums'
     end
 
     
