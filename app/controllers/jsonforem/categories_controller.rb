@@ -7,13 +7,6 @@ module Jsonforem
 
     def index
       @categories = Category.includes(:forums)
-      categories_hash = Hash.new
-      
-      @categories.each do |category|
-        categories_hash[category.title] = category.forums
-      end
-
-      respond_with categories_hash
     end
 
     def show
