@@ -1,10 +1,10 @@
-= miniature-octo-dribble
+= jsonforem
 
 This project uses a json REST api and comes under the MIT-LICENSE. Use it however you will. No responsibility taken for any kind of damage.
 
 == Installing:
 
-    gem 'miniature-octo-dribble', :github => 'rocifier/miniature-octo-tribble.git'
+    gem 'jsonforem', :github => 'rocifier/jsonforem.git'
 
     bundle
 
