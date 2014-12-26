@@ -1,4 +1,5 @@
 require_dependency "jsonforem/application_controller"
+require 'pry'
 
 module Jsonforem
   class PostsController < ApplicationController
@@ -59,8 +60,7 @@ module Jsonforem
       end
 
       def post_params
-        params.require(:post).permit(:title, :content, :topic_id, :post_id)
-        params.permit(:searchstring)
+        params.require(:post).permit(:title, :content, :topic_id, :post_id, :user_id)
       end
 
       def ensure_post_ownership!
